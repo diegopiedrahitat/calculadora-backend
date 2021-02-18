@@ -9,62 +9,58 @@ import org.junit.jupiter.api.Test;
 
 class OperacionesMatematicasServiceTest {
 
-	
-	OperacionesMatematicasService operacionesMatematicasService=new OperacionesMatematicasServiceImpl();
-	
-	@Test
-	public void debeSumarDosNumeros()throws Exception {
-		//Arrange
-		Integer n1=6;
-		Integer n2=4;
-		Integer expected=6;
-		Integer resultado=0;
-		
-		//Act
-		resultado=operacionesMatematicasService.sumar(n1, n2);
-		
-		//Assert		
-		assertEquals(expected, resultado);
-		
-	}
-	
-	@Test
-	
-	public void debeLanzarExceptionNumeroUno() {
-		//Arrange
-		Integer n1=null;
-		Integer n2=4;
-		String expectedMessage = "El n1 es nulo";
-	    String actualMessage=null;
+	OperacionesMatematicasService operacionesMatematicasService = new OperacionesMatematicasServiceImpl();
 
-				
-		//Act
-		Exception exception =assertThrows(Exception.class, ()->{
+	@Test
+	public void debeSumarDosNumeros() throws Exception {
+		// Arrange
+		Integer n1 = 6;
+		Integer n2 = 4;
+		Integer expected = 10;
+		Integer resultado = 0;
+
+		// Act
+		resultado = operacionesMatematicasService.sumar(n1, n2);
+
+		// Assert
+		assertEquals(expected, resultado);
+
+	}
+
+	@Test
+	public void debeLanzarExceptionNumeroUno() {
+		// Arrange
+		Integer n1 = null;
+		Integer n2 = 4;
+		String expectedMessage = "El n1 es nulo";
+		String actualMessage = null;
+
+		// Act
+		Exception exception = assertThrows(Exception.class, () -> {
 			operacionesMatematicasService.sumar(n1, n2);
 		});
-		actualMessage=exception.getMessage();
-		
-		//Assert		
+		actualMessage = exception.getMessage();
+
+		// Assert
 		assertTrue(actualMessage.contains(expectedMessage));
-		
+
 	}
-	
+
 	@Test
 	public void debeLanzarExceptionNumeroDos() {
-		//Arrange
-		Integer n1=2;
-		Integer n2=null;
+		// Arrange
+		Integer n1 = 2;
+		Integer n2 = null;
 		String expectedMessage = "El n2 es nulo";
-	    String actualMessage=null;
+		String actualMessage = null;
 
-				
-		//Act
-		Exception exception =assertThrows(Exception.class, ()->{
+		// Act
+		Exception exception = assertThrows(Exception.class, () -> {
 			operacionesMatematicasService.sumar(n1, n2);
 		});
-		actualMessage=exception.getMessage();
-		
-		//Assert		
+		actualMessage = exception.getMessage();
+
+		// Assert
 		assertTrue(actualMessage.contains(expectedMessage));
 
 	}
